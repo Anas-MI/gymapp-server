@@ -23,9 +23,10 @@ router.get('/:targetUserId', async function (req, res, next) {
 
 
     let {name,displayPictureUrl} = userData;
-    if(name=='')name ="User";
-    if(displayPictureUrl=='')displayPictureUrl='https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png';
+    if(!!!name)name ="User";
+    if(!!!displayPictureUrl)displayPictureUrl='https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png';
 
+    console.log(name,displayPictureUrl)
     await admin.messaging().sendToDevice(
       [fcmToken],
       {
